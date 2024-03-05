@@ -15,9 +15,9 @@ class CustomerTest {
     void setUp() {
         customer = new Customer("John",
                 "Doe",
-                "JD_01",
+                101,
                 "john.doe@example.com",
-                1980_01_01,
+                "1980",
                 123_456_7890L);
     }
 
@@ -27,9 +27,9 @@ class CustomerTest {
 
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
-        assertEquals("JD_01", customer.getCustomerID());
+        assertEquals(101, customer.getCustomerID());
         assertEquals("john.doe@example.com", customer.getEmail());
-        assertEquals(1980_01_01, customer.getDateOfBirth());
+        assertEquals("1980", customer.getDateOfBirth());
         assertEquals(123_456_7890L, customer.getContactNumber());
     }
 

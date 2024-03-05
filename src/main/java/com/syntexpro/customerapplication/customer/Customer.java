@@ -1,17 +1,63 @@
 package com.syntexpro.customerapplication.customer;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Customer {
 
-    private final String firstName, lastName, customerID, email;
-    private final Integer dateOfBirth;
-    private final Long contactNumber;
+    @Id
+    @SequenceGenerator(
+            name = "customer_sequence",
+            sequenceName = "customer_sequence",
+            allocationSize = 1
+    )
 
-    public Customer(String firstName, String lastName, String customerID, String email, Integer dateOfBirth, Long contactNumber) {
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "customer_sequence"
+    )
+
+    private Integer customerId;
+    private String firstName;
+    private String lastName;
+
+    private String email;
+    private String dateOfBirth;
+    private Long contactNumber;
+
+    public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, Integer customerID, String email, String dateOfBirth, Long contactNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.customerID = customerID;
+        this.customerId = customerID;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.contactNumber = contactNumber;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
 
@@ -23,15 +69,15 @@ public class Customer {
         return lastName;
     }
 
-    public String getCustomerID() {
-        return customerID;
+    public Integer getCustomerID() {
+        return customerId;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public Integer getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -44,7 +90,7 @@ public class Customer {
         return "Customer{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", customerID='" + customerID + '\'' +
+                ", customerID='" + customerId + '\'' +
                 ", email='" + email + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", contactNumber=" + contactNumber +

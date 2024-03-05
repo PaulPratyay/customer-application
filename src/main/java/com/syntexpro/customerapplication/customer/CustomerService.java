@@ -2,15 +2,16 @@ package com.syntexpro.customerapplication.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
-public class Service {
+@Service
+public class CustomerService {
     @Autowired
-    private Repository repository;
+    private CustomerRepository customerRepository;
 
     public List<Customer> customerService() {
-        return repository.customerRepository();
+        return customerRepository.findAll();
     }
 }

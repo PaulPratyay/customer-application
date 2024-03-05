@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: customer-microservice
+
+  # PostgreSQL DB connection
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev
+    username: pratyay
+    password: Pratyay*#02docker
+  jpa:
+    hibernate:
+      ddl-auto: none      # Use create the first time you run the code for creating the table in database
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
